@@ -15,4 +15,8 @@ export class ContaRepository {
     createAcount = async (conta: Conta) => {
         return this.manager.save(conta);
     }
+
+    listaAcount = async () => {
+        return this.manager.query('SELECT * FROM contas');
+    }
 }

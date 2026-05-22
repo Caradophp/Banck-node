@@ -9,11 +9,9 @@ const userController = new UserController();
 const loginController = new LoginController();
 const contaController = new ContaController();
 
-router.post('/user', userController.createUser);
+router.post('/user', verifyAuth, userController.createUser);
 router.get('/user/:id', verifyAuth, userController.listAll);
 router.get('/user/:id/detalhes', verifyAuth, userController.getUserCompleteInfos);
-// router.get()
-
-router.post('/conta', contaController.createAcount)
-
+router.get('/conta', verifyAuth, contaController.listAcount)
+router.post('/conta', verifyAuth, contaController.createAcount)
 router.post('/login', loginController.login)

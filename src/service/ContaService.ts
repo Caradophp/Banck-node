@@ -24,5 +24,9 @@ export class ContaService {
 
         return await this.repository.createAcount(conta);
     }
+
+    listAcount = async () => {
+        return await this.repository.listaAcount();
+    }
     
 }
