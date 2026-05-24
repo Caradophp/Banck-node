@@ -73,7 +73,10 @@ describe("UserController", () => {
 
   it("Deve avisar falta de campo nome", () => {
 
-    const response = makeMockResponse();
+    const response = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    }
 
     userController.createUser(
         makeMockRequest({
@@ -85,9 +88,6 @@ describe("UserController", () => {
         response as any
     );
 
-    // expect(response.status).toHaveBeenCalledWith(400);
-        expect(response.json).toHaveBeenCalledWith({
-        erro: 'Campo [nome] é obrigatório'
-        });
+      expect(response.json).toHaveBeenCalledWith({'erro': 'Campo [nome] é obrigatório'});
     });
 });
